@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Caesar Cipher Shift</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #f0f4f8;
+      color: #333;
+      text-align: center;
+      padding: 40px;
+    }
+
+    h1 {
+      color: #0078D4;
+      margin-bottom: 20px;
+    }
+
+    input[type="text"] {
+      font-size: 1.2em;
+      padding: 10px;
+      width: 200px;
+      margin-bottom: 20px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+
+    button {
+      font-size: 1em;
+      padding: 10px 20px;
+      background-color: #0078D4;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #005fa3;
+    }
+
+    pre {
+      text-align: left;
+      margin: 20px auto;
+      padding: 20px;
+      background: #fff;
+      border-radius: 8px;
+      width: 80%;
+      max-width: 600px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+      white-space: pre-wrap;
+    }
+  </style>
+</head>
+<body>
+  <h1>Caesar Cipher for Papy</h1>
+  <input type="text" id="inputText" value="Hello">
+  <button onclick="cipher()">Run Cipher</button>
+  <pre id="output"></pre>
+
+  <script>
+    function cipher() {
+      const inp = document.getElementById("inputText").value;
+      let output = "";
+
+      for (let i = 0; i < 26; i++) {
+        for (let j = 0; j < inp.length; j++) {
+          const c = inp[j];
+          if (/[a-z]/.test(c)) {
+            output += String.fromCharCode(((c.charCodeAt(0) + i - 97) % 26) + 97);
+          } else if (/[A-Z]/.test(c)) {
+            output += String.fromCharCode(((c.charCodeAt(0) + i - 65) % 26) + 65);
+          } else {
+            output += c;
+          }
+        }
+        if (i == 0){
+          output+='\t (Og text)';
+        }
+        else{
+          output+='\t +' + (i);
+        }
+        output += "\n";
+      }
+
+      document.getElementById("output").textContent = output;
+    }
+  </script>
+</body>
+</html>
