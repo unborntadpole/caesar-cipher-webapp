@@ -56,13 +56,13 @@
   <h1>Caesar Cipher for Papy</h1>
   <input type="text" id="inputText" value="Hello">
   <button onclick="cipher()">Run Cipher</button>
-  <pre id="output"></pre>
+  <pre id="output" style="display: none;"></pre>
 
   <script>
     function cipher() {
       const inp = document.getElementById("inputText").value;
       let output = "";
-
+      document.getElementById("output").style.display = ''
       for (let i = 0; i < 26; i++) {
         for (let j = 0; j < inp.length; j++) {
           const c = inp[j];
