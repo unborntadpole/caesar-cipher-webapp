@@ -1,25 +1,30 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+  <meta charset="UTF-8">
   <title>Caesar Cipher Shift</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
     body {
       font-family: 'Segoe UI', sans-serif;
       background: #f0f4f8;
       color: #333;
       text-align: center;
-      padding: 40px;
+      padding: 5vw;
+      margin: 0;
     }
 
     h1 {
       color: #0078D4;
-      margin-bottom: 20px;
+      margin-bottom: 5vw;
+      font-size: 6vw;
     }
 
     input[type="text"] {
       font-size: 1.2em;
       padding: 10px;
-      width: 200px;
+      width: 80%;
+      max-width: 300px;
       margin-bottom: 20px;
       border: 1px solid #ccc;
       border-radius: 6px;
@@ -45,10 +50,28 @@
       padding: 20px;
       background: #fff;
       border-radius: 8px;
-      width: 80%;
+      width: 90%;
       max-width: 600px;
       box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
       white-space: pre-wrap;
+      word-wrap: break-word;
+      overflow-x: auto;
+      font-size: 0.95em;
+    }
+
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 7vw;
+      }
+
+      input[type="text"], button {
+        font-size: 1em;
+        width: 90%;
+      }
+
+      pre {
+        font-size: 0.85em;
+      }
     }
   </style>
 </head>
@@ -62,7 +85,8 @@
     function cipher() {
       const inp = document.getElementById("inputText").value;
       let output = "";
-      document.getElementById("output").style.display = ''
+      document.getElementById("output").style.display = '';
+
       for (let i = 0; i < 26; i++) {
         for (let j = 0; j < inp.length; j++) {
           const c = inp[j];
@@ -74,12 +98,7 @@
             output += c;
           }
         }
-        if (i == 0){
-          output+='\t (Og text)';
-        }
-        else{
-          output+='\t +' + (i);
-        }
+        output += i === 0 ? "\t (Og text)" : "\t +" + i;
         output += "\n";
       }
 
